@@ -1,0 +1,27 @@
+<h1>Quotes</h1>
+
+<p><%= link_to 'New quote', new_quote_path %></p>
+
+<ol>
+  <% @quotes.each do |quote| %>
+    <li>
+      <blockquote>
+        <% quote.lines.each do |line| %>
+          <%= h line %><br/>
+        <% end %>
+      </blockquote>
+      <ul>
+        <li>Added <%= time_ago_in_words quote.created_at %> ago</li>
+        <li>
+          <%= render_score quote.score %>
+          <% if not quote.votes.empty? %>
+            <%= link_to 'Vote history', quote_votes_path(:quote_id => quote.id) %>
+          <% end %>
+          <%= button_to '+', quote_votes_path(:quote_id => quote.id, :vote_type => Vote::VOTE_TYPES[:up]) %>
+          <%= button_to '-', quote_votes_path(:quote_id => quote.id, :vote_type => Vote::VOTE_TYPES[:down]) %>
+        </li>
+        <li><%= link_to 'Permalink', quote %></li>
+      </ul>
+    </li>
+  <% end %>
+</ol>

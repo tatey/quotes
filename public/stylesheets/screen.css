@@ -1,0 +1,11 @@
+span.positive
+{
+  background: green;
+  color: white;
+}
+
+span.negative
+{
+  background: red;
+  color: white;
+}

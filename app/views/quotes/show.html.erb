@@ -1,0 +1,5 @@
+<h1>Quote #<%= @quote.id %> (<%= link_to 'Edit', [:edit, @quote] %>)</h1>
+
+<% @quote.lines.each do |line| %>
+  <%= line %><br/>
+<% end %>

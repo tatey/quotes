@@ -1,0 +1,14 @@
+<% form_for @quote do |form| %>
+  <fieldset>
+    <legend>Quote</legend>
+    
+    <ol>
+      <li>
+        <%= form.label :text %>
+        <%= form.text_area :text %>
+      </li>
+    </ol>
+    
+    <%= submit_tag submit_value %>
+  </fieldset>
+<% end %>
