@@ -1,5 +1,7 @@
-<h1>Quote #<%= @quote.id %> (<%= link_to 'Edit', [:edit, @quote] %>)</h1>
+<h1>Quote <%= @quote.number %></h1>
 
-<% @quote.lines.each do |line| %>
-  <%= line %><br/>
-<% end %>
+<blockquote>
+  <% @quote.lines.each do |line| %>
+    <%= line %><br>
+  <% end %>
+</blockquote>

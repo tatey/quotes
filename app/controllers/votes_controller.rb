@@ -10,8 +10,9 @@ class VotesController < ApplicationController
   end
   
   def create
-    @quote.votes.build(:vote_type => params[:vote_type]).save
-    flash[:info] = 'Vote has been cast'
+    @vote = @quote.votes.build(:vote_type => params[:vote_type])
+    @vote.save
+    flash[:info] = "#{Vote::VOTE_TYPES.index(@vote.vote_type).to_s.humanize} vote has been cast."
     redirect_to quotes_path
   end
   

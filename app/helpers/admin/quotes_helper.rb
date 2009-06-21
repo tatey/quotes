@@ -1,0 +1,2 @@
+module Admin::QuotesHelper
+end

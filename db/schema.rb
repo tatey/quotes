@@ -9,13 +9,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090620090507) do
+ActiveRecord::Schema.define(:version => 20090621101438) do
 
   create_table "quotes", :force => true do |t|
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "approved",   :default => false
   end
+
+  add_index "quotes", ["approved"], :name => "index_quotes_on_approved"
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
   create_table "votes", :force => true do |t|
     t.integer  "quote_id"
@@ -23,5 +40,7 @@ ActiveRecord::Schema.define(:version => 20090620090507) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "votes", ["vote_type"], :name => "index_votes_on_vote_type"
 
 end

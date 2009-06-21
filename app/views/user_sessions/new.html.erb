@@ -1,0 +1,16 @@
+<% form_for @user_session do |form| %>
+  <fieldset>
+    <legend>Login</legend>
+    
+    <ol>
+      <li>
+        <%= form.label :email %>
+        <%= form.text_field :email %>
+      </li>
+      <li>
+        <%= form.label :password %>
+        <%= form.text_field :password %>
+      </li>
+    </ol>
+  </fieldset>
+<% end %>

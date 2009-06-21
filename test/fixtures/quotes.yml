@@ -1,10 +1,13 @@
 quote1:
   id: 1
   text: "Line 1\nLine 2\nLine 3"
+  approved: <%= true %>
 quote2:
   id: 2
-  text: "AshKyd: I think you contain trace elements of the rare heavy metal \"nub\"."
+  text: "AshKyd: I think you contain trace elements of the rare heavy metal"
+  approved: <%= true %>
 quote3:
   id: 3
   text: "klepas: All the street lights in our street and the one parallel down from us are out. =S"
+  approved: <%= false %>
   
