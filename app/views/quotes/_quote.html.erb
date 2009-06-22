@@ -1,14 +1,16 @@
-<% form_for @quote do |form| %>
-  <fieldset>
-    <legend>Quote</legend>
-    
-    <ol>
-      <li>
-        <%= form.label :text %>
-        <%= form.text_area :text %>
-      </li>
-    </ol>
-    
-    <%= submit_tag submit_value %>
-  </fieldset>
-<% end %>
+<p>
+  <%= link_to quote.number, quote, :title => 'Permalink' %> 
+  <%= link_to '+', quote_votes_path(:quote_id => quote.id, :vote_type => Vote::VOTE_TYPES[:up]), :title => 'Vote up', :method => 'post' %>
+  (<%= quote.score %>)
+  <%= link_to '-', quote_votes_path(:quote_id => quote.id, :vote_type => Vote::VOTE_TYPES[:down]), :title => 'Vote down', :method => 'post' %>
+</p>
+
+<blockquote>
+  <% quote.lines.each do |line| %>
+    <%= line %><br>
+  <% end %>
+</blockquote>
+
+<p>
+  <%= quote.created_at %>
+</p>

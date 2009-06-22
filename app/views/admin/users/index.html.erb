@@ -1,0 +1,27 @@
+<h1>Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">E-mail</th>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td>
+          <ul>
+            <li><%= link_to 'Edit', [:edit, :admin, user] %></li>
+            <li><%= link_to 'Destroy', [:admin, user], :method => :delete %></li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

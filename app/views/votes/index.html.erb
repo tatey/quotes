@@ -1,9 +1,0 @@
-<h1><%= pluralize @votes.count, 'Vote' %> for Quote #<%= @quote.id %></h1>
-
-<ol>
-  <% @votes.each do |vote| %>
-    <li>
-      <%= Vote::VOTE_TYPES.index(vote.vote_type).to_s.humanize %> <%= time_ago_in_words vote.created_at %> ago
-    </li>
-  <% end %>
-</ol>

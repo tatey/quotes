@@ -18,9 +18,15 @@ class Admin::QuotesControllerTest < ActionController::TestCase
   end
   
   test 'update should update attributes on a quote' do
-    post :update, { :id => quotes(:quote2).id, :quote => { :text => 'It was a weird dream, and' } }
+    put :update, { :id => quotes(:quote2).id, :quote => { :text => 'It was a weird dream, and' } }
     assert_redirected_to admin_quotes_path
     assert_equal "Quote #{assigns(:quote).number} has been updated.", flash[:info]
+  end
+  
+  test 'approve should approve a quote' do
+    put :approve, { :id => quotes(:quote3).id }
+    assert_redirected_to admin_quotes_path
+    assert_equal "Quote #{assigns(:quote).number} has been approved.", flash[:info]
   end
   
   test 'destroy should destroy a quote' do

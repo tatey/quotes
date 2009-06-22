@@ -8,5 +8,5 @@ module QuotesHelper
       html_class = 'neutral'
     end
     content_tag :span, "Score #{score}", :class => html_class
-  end
+  end  
 end

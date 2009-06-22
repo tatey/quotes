@@ -30,7 +30,7 @@ class Admin::UsersControllerTest < ActionController::TestCase
   end
   
   test 'update should update attributes on a user' do
-    post :update, { :id => users(:tate_johnson).id, :user => { :email => 'foobar@bar.com' } }
+    put :update, { :id => users(:tate_johnson).id, :user => { :email => 'foobar@bar.com' } }
     assert_redirected_to admin_users_path
     assert_equal 'Tate has been updated.', flash[:info]
   end

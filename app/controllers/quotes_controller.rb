@@ -4,6 +4,7 @@ class QuotesController < ApplicationController
     respond_to do |format|
       format.html
       format.xml { render :xml => @quotes.to_xml }
+      format.json { render :json => @quotes.to_json }
     end
   end
   
@@ -12,6 +13,7 @@ class QuotesController < ApplicationController
     respond_to do |format|
       format.html
       format.xml { render :xml => @quote.to_xml }
+      format.json { render :json => @quote.to_json }
     end
   end
   

@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
   map.resources :quotes, :only => [:index, :show, :new, :create] do |quotes|
-    quotes.resources :votes, :only => [:index, :create]
+    quotes.resources :votes, :only => :create
   end
   map.resources :user_sessions, :only => [:new, :create, :destroy]
 
@@ -34,7 +34,7 @@ ActionController::Routing::Routes.draw do |map|
   #     admin.resources :products
   #   end
   map.with_options :namespace => 'admin/', :path_prefix => 'admin', :name_prefix => 'admin_' do |admin|
-    admin.resources :quotes, :only => [:index, :edit, :update, :destroy]
+    admin.resources :quotes, :member => { :approve => :put }, :only => [:index, :edit, :update, :destroy]
     admin.resources :users, :except => :show
   end
 
