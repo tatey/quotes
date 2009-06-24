@@ -17,8 +17,8 @@
         <td><%= user.last_name %></td>
         <td>
           <ul>
-            <li><%= link_to 'Edit', [:edit, :admin, user] %></li>
-            <li><%= link_to 'Destroy', [:admin, user], :method => :delete %></li>
+            <li><%= link_to 'Edit', [:edit, user] %></li>
+            <li><%= link_to 'Destroy', user, :method => :delete %></li>
           </ul>
         </td>
       </tr>

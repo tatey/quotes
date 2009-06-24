@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class UsersController < ApplicationController
   before_filter :require_user
   
   def index
@@ -13,7 +13,7 @@ class Admin::UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:info] = "#{@user.first_name} has been created."
-      redirect_to admin_users_path
+      redirect_to users_path
     else
       render :action => 'new'
     end
@@ -27,7 +27,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:info] = "#{@user.first_name} has been updated."
-      redirect_to admin_users_path
+      redirect_to users_path
     else
       render :action => 'edit'
     end
@@ -36,6 +36,6 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id]).destroy
     flash[:info] = "#{@user.first_name} has been destroyed."
-    redirect_to admin_users_path
+    redirect_to users_path
   end
 end

@@ -10,7 +10,7 @@ class UserSessionsControllerTest < ActionController::TestCase
     post :create, :user_session => { :email => 'tate@tatey.com', :password => 'secret' }
     assert user_session = UserSession.find
     assert_equal users(:tate_johnson), user_session.user
-    assert_redirected_to admin_users_path
+    assert_redirected_to quotes_path
     assert_equal 'Login successful!', flash[:info]
   end
   

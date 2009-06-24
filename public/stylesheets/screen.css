@@ -1,11 +1,12 @@
-span.positive
+html
 {
-  background: green;
-  color: white;
+  background: #141414;
 }
 
-span.negative
+body
 {
-  background: red;
-  color: white;
+  width: 40em;
+  max-width: 95%;
+  margin: 0 auto;
+  color: #cccccc;
 }

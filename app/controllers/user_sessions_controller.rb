@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:info] = 'Login successful!'
-      redirect_to_back_or_default admin_users_path
+      redirect_to_back_or_default quotes_path
     else
       render :action => :new
     end
