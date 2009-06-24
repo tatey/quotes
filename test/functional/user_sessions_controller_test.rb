@@ -17,7 +17,7 @@ class UserSessionsControllerTest < ActionController::TestCase
   test 'should destroy user session' do
     login_user
     
-    delete :destroy
+    delete :destroy, { :id => UserSession.find }
     assert_nil UserSession.find
     assert_redirected_to new_user_session_path
     assert_equal 'Logout successful!', flash[:info]

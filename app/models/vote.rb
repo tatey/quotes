@@ -1,7 +1,7 @@
 class Vote < ActiveRecord::Base
   belongs_to :quote
   
-  VOTE_TYPES = { :up => 1, :down => 2 }
+  VOTE_TYPES = { :up => 1, :down => -1 }
   
   validates_inclusion_of :vote_type, :in => VOTE_TYPES.values
   

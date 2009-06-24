@@ -9,4 +9,12 @@ module QuotesHelper
     end
     content_tag :span, "Score #{score}", :class => html_class
   end  
+  
+  def render_formatted_date_time(date_time)
+    if date_time > 1.week.ago
+      time_ago_in_words(date_time) + ' ago'
+    else
+      date_time.strftime("%A, #{date_time.day.ordinalize} %B %Y")
+    end
+  end
 end

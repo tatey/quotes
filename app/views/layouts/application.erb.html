@@ -3,14 +3,30 @@
 <html>
   <head>
     <title>Quotes</title>
-    
+
     <%= stylesheet_link_tag 'screen' %>
+    <link href="<%= quotes_path %>.atom" rel="alternate" type="application/atom+xml" />
   </head>
   
   <body>
-    <ul id="navigation">
-      <li><%= link_to 'Quotes', quotes_path %></li>
-    </ul>
+    <% if current_user %>
+      <p>Logged in as <%= current_user.first_name %> (<%= link_to 'Logout', user_session_path(:id => current_user.id), :method => :delete %>)</p>
+      
+      <nav>
+        <ul>
+          <li><%= link_to 'Quotes', quotes_path %></li>
+          <li><%= link_to 'Users', users_path %></li>
+        </ul>
+      </nav>
+    <% else %>
+      <p><%= link_to 'Login', new_user_session_path %></p>
+    <% end %>
+    
+    <% if flash[:notice] %>
+      <div class="flash_notice"><%= flash[:notice ]%></div>
+    <% elsif flash[:info ]%>
+      <div class="flash_info"><%= flash[:info] %></div>
+    <% end %>
     
     <%= yield %>
   </body>

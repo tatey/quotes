@@ -9,13 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090621101438) do
+ActiveRecord::Schema.define(:version => 20090624072801) do
 
   create_table "quotes", :force => true do |t|
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "approved",   :default => false
+    t.integer  "score",      :default => 0
   end
 
   add_index "quotes", ["approved"], :name => "index_quotes_on_approved"

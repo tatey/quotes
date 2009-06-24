@@ -1,15 +1,18 @@
-<h1>Quote <%= @quote.number %></h1>
+<h1><%= link_to 'Quotes', quotes_path %> &raquo; <%= @quote.number %></h1>
 
 <%= render :partial => 'quote', :locals => { :quote => @quote } %>
 
-<% if not @quote.votes.empty? %>
-  <h2><%= pluralize @quote.votes.count, 'Vote' %> for Quote <%= @quote.number %></h2>
+<article>
+  <% if not @quote.votes.empty? %>
+    <h1><%= pluralize @quote.votes.count, 'Vote' %></h1>
 
-  <ol>
-    <% @quote.votes.each do |vote| %>
-      <li>
-        <%= Vote::VOTE_TYPES.index(vote.vote_type).to_s.humanize %> <%= vote.created_at %>
-      </li>
-    <% end %>
-  </ol>
-<% end %>
+    <ol>
+      <% @quote.votes.each do |vote| %>
+        <li>
+          <%= Vote::VOTE_TYPES.index(vote.vote_type).to_s.humanize %> 
+          vote cast <%= distance_of_time_in_words(@quote.created_at, vote.created_at) %> later
+        </li>
+      <% end %>
+    </ol>
+  <% end %>
+</article>
