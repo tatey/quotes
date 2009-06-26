@@ -3,7 +3,7 @@ class Quote < ActiveRecord::Base
            :dependent    => :destroy, 
            :after_add    => :calculate_score, 
            :after_remove => :calculate_score
-  
+             
   validates_presence_of :text
   
   named_scope :approved,
@@ -31,9 +31,24 @@ class Quote < ActiveRecord::Base
     end
     scope
   end
+  
+  def text=(string)
+    string = string.strip if string.is_a?(String)
+    write_attribute(:text, string)
+  end
             
   def lines
-    text.split("\n")
+    return @lines if @lines or not text
+    @lines = []
+    nicks  = {}
+    text.split("\n").each do |line|
+      nick = line.slice!(0..line.index(':'))
+      if not nicks.has_key?(nick)
+        nicks[nick] = "colour_#{nicks.size}"
+      end
+      @lines << Line.new(nick, nicks[nick], line)
+    end
+    @lines
   end
       
   def number

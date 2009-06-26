@@ -1,5 +1,6 @@
 <blockquote>
   <% quote.lines.each do |line| %>
-    <%= line %><br>
+    <span class="<%= line.colour %>"><%= h line.nick %></span>
+    <%= render_italic_and_bold line.text %><br/>
   <% end %>
 </blockquote>

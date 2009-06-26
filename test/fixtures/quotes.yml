@@ -1,6 +1,6 @@
 quote1:
   id: 1
-  text: "Line 1\nLine 2\nLine 3"
+  text: "Nick1: Line 1\nNick1: Line 2\nNick2: Nick1: Line 3"
   approved: <%= true %>
   score: 1
 quote2:
