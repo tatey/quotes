@@ -29,7 +29,7 @@ class QuotesController < ApplicationController
   def create
     @quote = Quote.new(params[:quote])
     if @quote.save
-      flash[:info] = "Quote #{@quote.number} has been created."
+      flash[:info] = "Quote #{@quote.number} has been created and is waiting for approval by a moderator."
       redirect_to @quote
     else
       render :action => 'new'

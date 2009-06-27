@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-  
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title>Quotes</title>
 
@@ -9,25 +8,35 @@
   </head>
   
   <body>
-    <% if current_user %>
-      <p>Logged in as <%= current_user.first_name %> (<%= link_to 'Logout', user_session_path(:id => current_user.id), :method => :delete %>)</p>
-      
-      <nav>
-        <ul>
-          <li><%= link_to 'Quotes', quotes_path %></li>
-          <li><%= link_to 'Users', users_path %></li>
-        </ul>
-      </nav>
-    <% else %>
-      <p><%= link_to 'Login', new_user_session_path %></p>
-    <% end %>
-    
     <% if flash[:notice] %>
       <div class="flash_notice"><%= flash[:notice ]%></div>
     <% elsif flash[:info ]%>
       <div class="flash_info"><%= flash[:info] %></div>
     <% end %>
     
+    <ul id="navigation">
+      <li><%= link_to 'Quotes', quotes_path %></li>
+      <% if current_user %>
+        <li><%= link_to 'Users', users_path %></li>
+        <li><%= link_to "Logout #{current_user.first_name}?", user_session_path(:id => current_user.id), :method => :delete %></li>
+      <% else %>
+        <li><%= link_to 'Login?', new_user_session_path %></li>
+      <% end %>
+    </ul>
+    
     <%= yield %>
+  
+    <div id="footer">
+      <p class="left">
+        <a href="http://ash.ms">Ashley</a> conceived this, 
+        <a href="http://tatey.com">Tate</a> worked his magic...<br/>
+        and then <a href="http://klepas.org">Pascal</a> came and squirted design everywhere.
+      </p>
+      <span class="right">
+        <a href="#navigation">Back to top &uarr;</a>
+      </span>
+      <div class="clear_both">
+      </div>
+    </div>
   </body>
 </html>

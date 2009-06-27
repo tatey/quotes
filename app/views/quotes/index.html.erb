@@ -1,36 +1,39 @@
 <h1>Quotes</h1>
 
-<p>Quotes for #lolbot on freenode. Feel free to <%= link_to 'pinch the code', 'http://github.com/tatey/quotes/tree' %>, or if you’re a resident from the channel <%= link_to 'submit a quote', new_quote_path %>.</p>
+<p class="large_serif">
+  Quotes for #lolbot on freenode. Feel free to <%= link_to 'pinch the code', 'http://github.com/tatey/quotes/tree' %>, or if you’re a resident from the channel <%= link_to 'submit a quote', new_quote_path %>.
+</p>
 
-<nav>
-  <ul>
-    <% if current_user %>
-      <li><%= link_to 'All', quotes_path %></li>
-      <li><%= link_to 'Approved', quotes_path(:approval => 'approved') %></li>
-      <li><%= link_to 'Unapproved', quotes_path(:approval => 'unapproved') %></li>
-    <% end %>
-    <li><%= link_to 'Recent', quotes_path %></li>
-    <li><%= link_to 'Highest score', quotes_path(:order => 'score_desc') %></li>
-  </ul>
-</nav>
+<ul id="switch">
+  <% if current_user %>
+    <li><%= link_to 'All', quotes_path %></li>
+    <li><%= link_to 'Unapproved', quotes_path(:approval => 'unapproved') %></li>
+  <% end %>
+  <li><%= link_to 'Recent', quotes_path %></li>
+  <li><%= link_to 'Highest score', quotes_path(:order => 'score_desc') %></li>
+</ul>
 
-<ul>
+<ul id="quotes">
   <% @quotes.each do |quote| %>
-    <li>
+    <% if quote.approved? %>
+      <li>
+    <% else %>
+      <li class="unapproved">
+    <% end %>
       <%= render :partial => 'quote', :locals => { :quote => quote } %>
-      <ul>
-        <% if current_user %>
-          <li><%= link_to 'Edit', [:edit, quote]%></li>
-          <li><%= link_to 'Destroy', quote, :method => :delete %>
-          <% if not quote.approved? %>
-            <li><%= link_to 'Approve', quote_path(:id => quote.id, :quote => { :approved => true }), :method => :put %></li>
-          <% end %>
-        <% end %>
-        <li>Created <%= render_formatted_date_time(quote.created_at) %></li>
-        <li><%= link_to 'Permalink', quote %></li>
+      <ul class="meta">
+        <li>Submitted <%= render_formatted_date_time(quote.created_at) %></li>
         <li><%= render_score(quote.score) %></li>
         <li><%= link_to '+', quote_votes_path(:quote_id => quote.id, :vote_type => Vote::VOTE_TYPES[:up]), :title => 'Vote up', :method => 'post' %></li>
         <li><%= link_to '-', quote_votes_path(:quote_id => quote.id, :vote_type => Vote::VOTE_TYPES[:down]), :title => 'Vote down', :method => 'post' %></li>
+        <% if current_user %>
+          <li><%= link_to 'Edit', [:edit, quote]%></li>
+        <% end %>
+        <% if current_user and not quote.approved? %>
+          <li><%= link_to 'Approve', quote_path(:id => quote.id, :quote => { :approved => true }), :method => :put %></li>
+        <% else %>
+          <li><%= link_to 'Permalink', quote %></li>
+        <% end %>
       </ul>
     </li>
   <% end %>

@@ -1,3 +1,5 @@
+/* Document and defaults */
+
 html
 {
   background: #141414;
@@ -5,33 +7,330 @@ html
 
 body
 {
-  width: 45em;
+  width: 46em;
   max-width: 95%;
   margin: 0 auto;
-  color: #cccccc;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 1em;
+  line-height: 1.4em;
+  color: #ccc;
 }
 
-.colour_0
+/* Type */
+
+a:link,
+a:visited
 {
-  color: #C6E567;
+  color: #6c8fbf;
+  text-decoration: none;
 }
 
-.colour_1
+a:hover,
+a:focus,
+a:active
 {
-  color: #FF3366;
+  background: #000;
+  color: #ff3366;
 }
 
-.colour_2
+h1,
+h2,
+h3,
+.large_serif
 {
-  color: #6C8FBF;
+  font-family: 'Georgia', serif;
 }
 
-.colour_3
+h1,
+h2
+{
+  font-weight: normal;
+}
+
+h1,
+h2,
+h3
+{
+  color: #c2e5a6;
+}
+
+h1
+{
+  margin-bottom: 1em;
+  font-size: 3em;
+}
+
+h2
+{
+  font-size: 2em;
+}
+
+.large_serif
+{
+  line-height: 1.6em;
+  font-size: 1.5em;
+}
+
+/* Blocks */
+
+.display_block
+{
+  display: block;
+}
+
+.left
+{
+  float: left;
+}
+
+.right
+{
+  float: right;
+}
+
+.clear_both
+{
+  clear: both;
+}
+
+.hide
+{
+  position: absolute;
+  top: -9999em;
+  left: -9999em;
+}
+  
+/* Layout */
+
+ul#navigation
+{
+  float: right;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+  ul#navigation li
+  {
+    display: inline;
+  }
+
+    ul#navigation li a
+    {
+      padding: 0.5em 1em;
+      background: #222;
+      font-size: 0.875em;
+      color: #ccc;
+    }
+    
+    ul#navigation li a:hover,
+    ul#navigation li a:focus,
+    ul#navigation li a:active
+    {
+      background: #ccc;
+      color: #141414;
+    }
+
+ul#switch
+{
+  margin: 0;
+  padding: 1em 0 0 0;
+  text-align: center;
+  list-style-type: none;
+}
+
+  ul#switch li
+  {
+    display: inline;
+  }
+  
+    ul#switch li a
+    {
+      padding: 0.5em;
+      font-size: 1.5em;
+      color: #6c8fbf;
+    }
+    
+    ul#switch li a:hover,
+    ul#switch li a:focus,
+    ul#switch li a:active
+    {
+      background: #000;
+      color: #ff3366;
+    }
+    
+ul#quotes
+{
+  margin: 3em 0 0 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+  ul#quotes li
+  {
+    border-top: 1px dotted #222;
+  }
+  
+  ul#quotes li.unapproved
+  {
+    background: #171717;
+  }
+
+    ul#quotes li span.nick
+    {
+      display: block;
+      float: left;
+      width: 5em;
+      margin-right: 1em;
+      text-align: right;
+    }
+  
+    ul#quotes li span.text
+    {
+      display: block;
+      float: left;
+      width: 35em;
+    }
+    
+    ul#quotes li ul.meta
+    {
+      padding: 0 2em 1em 0;
+      list-style-type: none;
+      text-align: right;
+    }
+    
+      ul#quotes li ul.meta li
+      {
+        display: inline;
+        margin: 0;
+        padding: 0;
+        border: none;
+        font-size: 0.875em;
+        color: #777;
+      }
+        
+div#footer
+{
+  margin-top: 2em;
+  padding: 2em 0;
+  border-top: 1px solid #444;
+}
+
+  div#footer p
+  {
+    margin: 0;
+    padding: 0;
+  }
+
+/* Forms */
+
+fieldset
+{
+  margin: 0;
+  padding: 0;
+  border: none;  
+}
+
+  fieldset ol
+  {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+    fieldset ol li
+    {
+      margin-bottom: 1em;
+    }
+  
+      fieldset ol li label
+      {
+        display: block;
+      }
+      
+      fieldset ol li input,
+      fieldset ol li select,
+      fieldset ol li textarea
+      {
+        font-family: 'Georgia', sans-serif;
+      }
+      
+      fieldset ol li input,
+      fieldset ol li select
+      {
+        padding: 0.1em;
+        font-size: 1.5em;
+      }
+      
+      fieldset ol li textarea
+      {
+        width: 100%;
+        height: 10em;
+        padding: 0.25em;
+      }
+      
+/* Nick colours */
+      
+span.colour_0
+{
+  color: #c6e567;
+}
+
+span.colour_1
+{
+  color: #ff3366;
+}
+
+span.colour_2
+{
+  color: #93bedf;
+}
+
+span.colour_3
 {
   color: #804070;
 }
 
-.colour_4
+span.colour_4
 {
-  color: #AE9D22;
+  color: #ae9d22;
 }
+
+/* Other */
+
+div.flash_info,
+div.flash_notice
+{
+  margin: 2em 0;
+  padding: 0.5em 1em;
+  text-align: center;
+  border-width: 2px;
+  border-style: solid;
+}
+
+div.flash_info
+{
+  background: #3e4829;
+  border-color: #708742;
+  color: #bce567;
+}
+
+div.flash_notice
+{
+  background: #484729;
+  border-color: #878342;
+  color: #e5de67;
+}
+
+div.pagination
+{
+  padding-top: 2em;
+  border-top: 1px solid #444;
+  text-align: center;
+}
+
+  div.pagination a,
+  div.pagination span
+  {
+    margin: 0 0.75em;
+  }

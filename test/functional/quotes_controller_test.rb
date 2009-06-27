@@ -24,7 +24,7 @@ class QuotesControllerTest < ActionController::TestCase
   test 'create should save a quote and redirect to show' do
     post :create, { :quote => { :text => 'So the other day I was hanging out' } }
     assert_redirected_to assigns(:quote)
-    assert_equal "Quote #{assigns(:quote).number} has been created.", flash[:info]
+    assert_equal "Quote #{assigns(:quote).number} has been created and is waiting for approval by a moderator.", flash[:info]
   end
   
   test 'should get edit' do
