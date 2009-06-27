@@ -1,13 +1,14 @@
 module QuotesHelper
   def render_score(score)
-    if score > 0
+    if score > 1
       html_class = 'positive'
-    elsif score < 0
+    elsif score < -1
       html_class = 'negative'
     else
       html_class = 'neutral'
     end
-    content_tag :span, "Score #{score}", :class => html_class
+    score = "+#{score}" if score > 0
+    content_tag :span, "(#{score})", :class => html_class
   end  
   
   def render_formatted_date_time(date_time)

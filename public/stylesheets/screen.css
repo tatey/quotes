@@ -119,7 +119,6 @@ ul#navigation
     {
       padding: 0.5em 1em;
       background: #222;
-      font-size: 0.875em;
       color: #ccc;
     }
     
@@ -168,14 +167,33 @@ ul#quotes
 
   ul#quotes li
   {
-    border-top: 1px dotted #222;
+    border-top: 1px dotted #333;
+  }
+  
+  ul#quotes li.odd
+  {
+    background: #191919;
   }
   
   ul#quotes li.unapproved
   {
-    background: #171717;
+    background: #484729 url('/images/waiting_approval.png') center center no-repeat;
+    border: 1px solid #878342;
+    color: #e5de67;
   }
 
+    ul#quotes li.unapproved span.colour_0,
+    ul#quotes li.unapproved span.colour_1,
+    ul#quotes li.unapproved span.colour_2,
+    ul#quotes li.unapproved span.colour_3,
+    ul#quotes li.unapproved span.colour_4,
+    ul#quotes li.unapproved ul.meta,
+    ul#quotes li.unapproved ul.actions a:link,
+    ul#quotes li.unapproved ul.actions a:visited
+    {
+      color: #e5de67;
+    }
+  
     ul#quotes li span.nick
     {
       display: block;
@@ -189,31 +207,70 @@ ul#quotes
     {
       display: block;
       float: left;
-      width: 35em;
+      width: 34em;
     }
     
+    ul#quotes li ul.actions,
     ul#quotes li ul.meta
     {
-      padding: 0 2em 1em 0;
-      list-style-type: none;
+      padding-right: 2em;
+      font-size: 0.875em;
       text-align: right;
+      list-style-type: none;
     }
     
+    ul#quotes li ul.actions
+    {
+      visibility: hidden;
+      padding-top: 1em;
+    }
+    
+    ul#quotes li:hover ul.actions
+    {
+      visibility: visible;
+    }
+
+      ul#quotes li ul.actions li,
       ul#quotes li ul.meta li
       {
         display: inline;
-        margin: 0;
         padding: 0;
         border: none;
-        font-size: 0.875em;
+      }
+      
+      ul#quotes li ul.actions li
+      {
+        margin: 0 0.5em;
+      }
+      
+      ul#quotes li ul.actions li a,
+      ul#quotes li ul.meta li a,
+      ul#quotes li ul.meta
+      {
         color: #777;
+      }
+      
+    ul#quotes li ul.meta
+    {
+      margin: 0;
+      padding-bottom: 1em;
+    }
+    
+      ul#quotes li ul.meta li span.positive
+      {
+        color: #c6e567;
+      }
+      
+      ul#quotes li ul.meta li span.negative
+      {
+        color: #ff4b4b;
       }
         
 div#footer
 {
   margin-top: 2em;
   padding: 2em 0;
-  border-top: 1px solid #444;
+  border-top: 1px solid #777;
 }
 
   div#footer p
@@ -325,7 +382,7 @@ div.flash_notice
 div.pagination
 {
   padding-top: 2em;
-  border-top: 1px solid #444;
+  border-top: 1px solid #777;
   text-align: center;
 }
 
@@ -334,3 +391,11 @@ div.pagination
   {
     margin: 0 0.75em;
   }
+  
+span.umberlla
+{
+  padding-left: 0.5em;
+  line-height: 0;
+  font-size: 3em;
+  color: #ff3366;
+}
