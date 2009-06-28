@@ -4,7 +4,7 @@
       <li><%= link_to '&#10003; Approve', quote_path(:id => quote.id, :quote => { :approved => true }), :method => :put %></li>
     <% end %>
     <li><%= link_to '&#9998; Edit', [:edit, quote] %></li>
-    <li><%= link_to '&#10007; Destroy', quote, :method => :delete, :confirm => "Are you sure you want to destroy quote #{quote.number}" %></li>
+    <li><%= link_to '&#10007; Delete', quote, :method => :delete, :confirm => "Are you sure you want to delete quote #{quote.number}" %></li>
   <% end %>
   <% if quote.approved %>
     <li><%= link_to '&uarr; Vote up', quote_votes_path(:quote_id => quote.id, :vote_type => Vote::VOTE_TYPES[:up]), :title => 'Cast a vote for +1', :method => 'post' %></li>
