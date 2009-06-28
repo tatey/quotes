@@ -190,28 +190,14 @@ ul#quotes
   
   ul#quotes li.unapproved
   {
-    background: #484729;
-    border: 1px solid #878342;
-    color: #e5de67;
+    background: black;
+    border: 1px dashed #666;
   }
   
   ul#quotes li.unapproved:hover
   {
-    background: #605f32;
-    border: 1px solid #e5de67;
+    border: 1px solid #666;
   }
-
-    ul#quotes li.unapproved span.colour_0,
-    ul#quotes li.unapproved span.colour_1,
-    ul#quotes li.unapproved span.colour_2,
-    ul#quotes li.unapproved span.colour_3,
-    ul#quotes li.unapproved span.colour_4,
-    ul#quotes li.unapproved ul.meta,
-    ul#quotes li.unapproved ul.actions li a:link,
-    ul#quotes li.unapproved ul.actions li a:visited
-    {
-      color: #e5de67;
-    }
     
     ul#quotes li.unapproved ul.actions li a:hover,
     ul#quotes li.unapproved ul.actions li a:focus,
