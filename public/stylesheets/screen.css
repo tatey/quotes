@@ -413,7 +413,7 @@ div.flash_notice
   margin: 2em 0;
   padding: 0.5em 1em;
   text-align: center;
-  border-width: 2px;
+  border-width: 1px;
   border-style: solid;
 }
 
@@ -427,7 +427,7 @@ div.flash_notice
     line-height: 1em;
     padding: 0.25em 0.46em;
     font-size: 0.75em;
-    border-width: 2px;
+    border-width: 1px;
     border-style: solid;
     background: #141414;
   }
@@ -447,14 +447,14 @@ div.flash_notice
 
 div.flash_info
 {
-  background: #3e4829;
-  border-color: #708742;
-  color: #bce567;
+  background: black;
+  border-color: #332828;
+  color: #ccc;
 }
 
   div.flash_info a.close
   {
-    border-color: #708742;
+    border-color: #332828;
     color: #bce567;
   }
 
