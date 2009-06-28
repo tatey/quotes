@@ -126,8 +126,7 @@ ul#navigation
     ul#navigation li a:focus,
     ul#navigation li a:active
     {
-      background: #ccc;
-      color: #141414;
+      background: #444;
     }
 
 ul#switch
@@ -170,6 +169,12 @@ ul#quotes
     border-top: 1px dotted #333;
   }
   
+  ul#quotes > li:hover,
+  ul#quotes > li.odd:hover
+  {
+    background: #252525;
+  }
+  
   ul#quotes li.odd
   {
     background: #191919;
@@ -177,9 +182,15 @@ ul#quotes
   
   ul#quotes li.unapproved
   {
-    background: #484729 url('/images/waiting_approval.png') center center no-repeat;
+    background: #484729;
     border: 1px solid #878342;
     color: #e5de67;
+  }
+  
+  ul#quotes li.unapproved:hover
+  {
+    background: #605f32;
+    border: 1px solid #e5de67;
   }
 
     ul#quotes li.unapproved span.colour_0,
@@ -188,11 +199,19 @@ ul#quotes
     ul#quotes li.unapproved span.colour_3,
     ul#quotes li.unapproved span.colour_4,
     ul#quotes li.unapproved ul.meta,
-    ul#quotes li.unapproved ul.actions a:link,
-    ul#quotes li.unapproved ul.actions a:visited
+    ul#quotes li.unapproved ul.actions li a:link,
+    ul#quotes li.unapproved ul.actions li a:visited
     {
       color: #e5de67;
     }
+    
+    ul#quotes li.unapproved ul.actions li a:hover,
+    ul#quotes li.unapproved ul.actions li a:focus,
+    ul#quotes li.unapproved ul.actions li a:active
+    {
+      color: #fff;
+    }
+    
   
     ul#quotes li span.nick
     {
@@ -214,7 +233,7 @@ ul#quotes
     ul#quotes li ul.meta
     {
       padding-right: 2em;
-      font-size: 0.875em;
+      font-size: 0.75em;
       text-align: right;
       list-style-type: none;
     }
@@ -250,6 +269,17 @@ ul#quotes
         color: #777;
       }
       
+      ul#quotes li ul.actions li a:hover,
+      ul#quotes li ul.actions li a:focus,
+      ul#quotes li ul.actions li a:active,
+      ul#quotes li ul.meta li a:hover,
+      ul#quotes li ul.meta li a:focus,
+      ul#quotes li ul.meta li a:active
+      {
+        background: none;
+        color: #ccc;
+      }
+      
     ul#quotes li ul.meta
     {
       margin: 0;
@@ -268,8 +298,8 @@ ul#quotes
         
 div#footer
 {
-  margin-top: 2em;
-  padding: 2em 0;
+  margin-top: 2.25em;
+  padding: 3.25em 0;
   border-top: 1px solid #777;
 }
 
@@ -381,6 +411,7 @@ div.flash_notice
 
 div.pagination
 {
+  margin-top: 3.25em;
   padding-top: 2em;
   border-top: 1px solid #777;
   text-align: center;

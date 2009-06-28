@@ -18,9 +18,9 @@
       <li><%= link_to 'Quotes', quotes_path %></li>
       <% if current_user %>
         <li><%= link_to 'Users', users_path %></li>
-        <li><%= link_to "Logout #{current_user.first_name}?", user_session_path(:id => current_user.id), :method => :delete %></li>
+        <li><%= link_to "Logout #{h(current_user.first_name)}", user_session_path(:id => current_user.id), :method => :delete %></li>
       <% else %>
-        <li><%= link_to 'Login?', new_user_session_path %></li>
+        <li><%= link_to 'Login', new_user_session_path %></li>
       <% end %>
     </ul>
     

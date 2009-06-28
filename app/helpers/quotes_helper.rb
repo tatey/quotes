@@ -1,8 +1,8 @@
 module QuotesHelper
   def render_score(score)
-    if score > 1
+    if score > 2
       html_class = 'positive'
-    elsif score < -1
+    elsif score < -2
       html_class = 'negative'
     else
       html_class = 'neutral'

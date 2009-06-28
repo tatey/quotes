@@ -5,12 +5,11 @@
 </p>
 
 <ul id="switch">
-  <% if current_user %>
-    <li><%= link_to 'All', quotes_path %></li>
-    <li><%= link_to 'Unapproved', quotes_path(:approval => 'unapproved') %></li>
-  <% end %>
   <li><%= link_to 'Recent', quotes_path %></li>
   <li><%= link_to 'Highest score', quotes_path(:order => 'score_desc') %></li>
+  <% if @unapproved_count %>
+    <li><%= link_to "(#{@unapproved_count}) Unapproved", quotes_path(:approval => 'unapproved') %></li>
+  <% end %>
 </ul>
 
 <ul id="quotes">

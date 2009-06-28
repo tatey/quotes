@@ -16,4 +16,14 @@ class VoteTest < ActiveSupport::TestCase
       assert_equal Vote::VOTE_TYPES[:down], vote.vote_type
     end
   end
+  
+  test 'humanised_vote_type should be english representation of vote_type' do
+    assert_equal 'Up', Vote.new(:vote_type => Vote::VOTE_TYPES[:up]).humanised_vote_type
+    assert_equal 'Down', Vote.new(:vote_type => Vote::VOTE_TYPES[:down]).humanised_vote_type
+  end
+  
+  test 'characterised_vote_type should be character entity reference representation of vote_type' do
+    assert_equal '&uarr;', Vote.new(:vote_type => Vote::VOTE_TYPES[:up]).characterised_vote_type
+    assert_equal '&darr;', Vote.new(:vote_type => Vote::VOTE_TYPES[:down]).characterised_vote_type
+  end
 end

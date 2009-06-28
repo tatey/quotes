@@ -1,12 +1,39 @@
 require 'test_helper'
 
 class QuotesControllerTest < ActionController::TestCase
-  test 'should get index with approved quotes when no user' do
+  test 'should get index with approved quotes when no logged in user' do
     get :index, { :approval => 'unapproved' }
     assert_response :success
     assigns(:quotes).each do |quote|
-      assert quote.approved
+      assert quote.approved?
     end
+  end
+  
+  test 'should get index with unapproved quotes when logged in user' do
+    login_user
+    
+    get :index, { :approval => 'unapproved' }
+    assert_response :success
+    assigns(:quotes).each do |quote|
+      assert ! quote.approved?
+    end
+  end
+  
+  test 'should get index with unapproved_count when unapproved quotes and logged in user' do
+    login_user
+    
+    get :index
+    assert_response :success
+    assert assigns(:unapproved_count) > 0
+  end
+  
+  test 'should get index without unapproved_count when no unapproved quotes and logged in user' do
+    login_user
+    
+    Quote.unapproved.delete_all
+    get :index
+    assert_response :success
+    assert_nil assigns(:unapproved_count)
   end
   
   test 'should show a quote' do
@@ -21,10 +48,20 @@ class QuotesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:quote)
   end
   
-  test 'create should save a quote and redirect to show' do
-    post :create, { :quote => { :text => 'So the other day I was hanging out' } }
-    assert_redirected_to assigns(:quote)
-    assert_equal "Quote #{assigns(:quote).number} has been created and is waiting for approval by a moderator.", flash[:info]
+  test 'create should save an unapproved quote and redirect to quotes_path when no user' do
+    post :create, { :quote => { :text => 'Tate: So the other day I was hanging out' } }
+    assert ! assigns(:quote).approved?
+    assert_redirected_to quotes_path
+    assert_equal "Quote #{assigns(:quote).number} has been submitted and is waiting for approval by a moderator.", flash[:info]
+  end
+  
+  test 'create should save an approved quote and redirect to quotes path when user' do
+    login_user
+    
+    post :create, { :quote => { :text => 'Tate: So the other day I was hanging out' } }
+    assert assigns(:quote).approved?
+    assert_redirected_to quotes_path
+    assert_equal "Quote #{assigns(:quote).number} has been submitted.", flash[:info]
   end
   
   test 'should get edit' do

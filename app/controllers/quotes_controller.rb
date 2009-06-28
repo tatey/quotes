@@ -3,7 +3,11 @@ class QuotesController < ApplicationController
   
   def index
     params[:order] ||= 'created_at_desc'
-    params[:approval] = 'approved' unless current_user
+    if current_user
+      @unapproved_count = Quote.unapproved.count unless Quote.unapproved.count.zero?
+    else
+      params[:approval] = 'approved'
+    end
     @quotes = Quote.find_by_options(params).paginate(:page => params[:page])
     respond_to do |format|
       format.html
@@ -29,8 +33,13 @@ class QuotesController < ApplicationController
   def create
     @quote = Quote.new(params[:quote])
     if @quote.save
-      flash[:info] = "Quote #{@quote.number} has been created and is waiting for approval by a moderator."
-      redirect_to @quote
+      if current_user
+        @quote.update_attribute(:approved, true)
+        flash[:info] = "Quote #{@quote.number} has been submitted."
+      else
+        flash[:info] = "Quote #{@quote.number} has been submitted and is waiting for approval by a moderator."
+      end
+      redirect_to quotes_path
     else
       render :action => 'new'
     end
