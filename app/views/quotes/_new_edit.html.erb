@@ -1,3 +1,5 @@
+<%= error_messages_for :quote %>
+
 <% form_for @quote do |form| %>
   <fieldset>
     <ol>
@@ -14,7 +16,7 @@
 <h2>Formatting</h2>
 
 <ul>
-  <li>Optimal format is <code>Name&#58; Line</code>. Your mileage may vary with other formats.</li>
+  <li>Format is <code>Name&#58; Line</code> or <code>* Action</code></li>
   <li><em>_emphasised_</em> and <em>*italtic*</em> text.</li>
   <li><strong>**stong**</strong> and <strong>__bold__</strong> text.</li>
   <li>We'll strip leading and trailing whitespace.</li>

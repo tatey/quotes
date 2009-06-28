@@ -62,6 +62,7 @@ h1
 
 h2
 {
+  line-height: 1.4em;
   font-size: 2em;
 }
 
@@ -219,8 +220,8 @@ ul#quotes
       color: #fff;
     }
   
-    ul#quotes li span.nick,
-    div.quote span.nick
+    ul#quotes li span.identifier,
+    div.quote span.identifier
     {
       display: block;
       float: left;
@@ -383,8 +384,13 @@ fieldset
         padding: 0.25em;
       }
       
-/* Nick colours */
-      
+/* Identifier styles */
+
+span.action
+{
+  font-style: italic;
+}
+
 span.colour_0
 {
   color: #c6e567;

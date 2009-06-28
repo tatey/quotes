@@ -16,6 +16,15 @@ class QuoteTest < ActiveSupport::TestCase
   test 'should not save without text' do
     @quote.text = nil
     assert ! @quote.save
+    @quote.text = ''
+    assert ! @quote.save
+    @quote.text = '     '
+    assert ! @quote.save
+  end
+  
+  test 'should not save without formatted text' do
+    @quote.text = '<Nick> Line'
+    assert ! @quote.save
   end
   
   test 'named_scope approved should be a collection of approved quotes' do
@@ -30,14 +39,15 @@ class QuoteTest < ActiveSupport::TestCase
     end
   end
   
-  test 'lines should be an array of lines with no duplicate colours' do
-    assert_equal 3, @quote.lines.size
-    assert_equal 'Nick1:', @quote.lines[0].nick
-    assert_equal 'colour_0', @quote.lines[0].colour
-    assert_equal 'Nick1:', @quote.lines[1].nick
-    assert_equal 'colour_0', @quote.lines[1].colour
-    assert_equal 'Nick2:', @quote.lines[2].nick
-    assert_equal 'colour_1', @quote.lines[2].colour
+  test 'lines should be an array of lines with no duplicate styles' do
+    assert_equal 'Nick1:', @quote.lines[0].identifier
+    assert_equal 'colour_0', @quote.lines[0].style
+    assert_equal 'Nick1:', @quote.lines[1].identifier
+    assert_equal 'colour_0', @quote.lines[1].style
+    assert_equal 'Nick2:', @quote.lines[2].identifier
+    assert_equal 'colour_1', @quote.lines[2].style
+    assert_equal '*', @quote.lines[3].identifier
+    assert_equal 'action', @quote.lines[3].style
   end
   
   test 'lines should be nil when text is undefined' do

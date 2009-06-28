@@ -15,8 +15,8 @@
 <blockquote>
   <p>
     <% quote.lines.each do |line| %>
-      <span class="nick <%= line.colour %> clear_left"><%= h line.nick %></span>
-      <span class="text"><%= render_italic_and_bold line.text %></span><br/>
+      <span class="identifier <%= line.style %> clear_left"><%= h line.identifier %></span>
+      <span class="text <%= line.style if line.style == 'action' %>"><%= render_italic_and_bold(line.text) %></span><br/>
     <% end %>
   </p>
 </blockquote>

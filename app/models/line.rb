@@ -1,9 +1,9 @@
 class Line
-  attr_reader :nick, :colour, :text
+  attr_reader :identifier, :style, :text
   
-  def initialize(nick, colour, text)
-    @nick   = nick
-    @colour = colour
-    @text   = text
+  def initialize(identifier, style, text)
+    @identifier = identifier
+    @style      = style
+    @text       = text
   end
 end
