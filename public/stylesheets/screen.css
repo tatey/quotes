@@ -413,7 +413,8 @@ span.colour_4
 /* Other */
 
 div.flash_info,
-div.flash_notice
+div.flash_notice,
+div.flash_error
 {
   position: relative;
   margin: 2em 0;
@@ -424,7 +425,8 @@ div.flash_notice
 }
 
   div.flash_info a.close,
-  div.flash_notice a.close
+  div.flash_notice a.close,
+  div.flash_error a.close
   {
     display: block;
     position: absolute;
@@ -436,6 +438,8 @@ div.flash_notice
     border-width: 1px;
     border-style: solid;
     background: #141414;
+    border-color: #332828;
+    color: #bce567;
   }
 
   div.flash_info a.close:hover,
@@ -443,40 +447,40 @@ div.flash_notice
   div.flash_info a.close:active
   div.flash_notice a.close:hover,
   div.flash_notice a.close:focus,
-  div.flash_notice a.close:active
+  div.flash_notice a.close:active,
+  div.flash_error a.close:hover,
+  div.flash_error a.close:focus,
+  div.flash_error a.close:active
   {
     background: #333;
     border-color: #ccc;
     color: #ccc;
   }
-  
 
-div.flash_info
+div.flash_info,
+div.flash_notice
 {
   background: black;
   border-color: #332828;
-  color: #ccc;
 }
 
-  div.flash_info a.close
-  {
-    border-color: #332828;
-    color: #bce567;
-  }
+div.flash_error
+{
+  background: black;
+  border-color: #510c0b;
+  color: #ff4444;
+}
+
+div.flash_info
+{
+  color: #bce567;
+}
 
 div.flash_notice
 {
-  background: #484729;
-  border-color: #878342;
-  color: #e5de67;
+  color: #ccc;
 }
 
-  div.flash_notice a.close
-  {
-    border-color: #878342;
-    color: #e5de67;
-  }
-  
 div.pagination
 {
   margin-top: 3.25em;
