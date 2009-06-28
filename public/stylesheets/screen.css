@@ -10,7 +10,7 @@ body
   width: 46em;
   max-width: 95%;
   margin: 0 auto;
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   font-size: 1em;
   line-height: 1.4em;
   color: #ccc;
@@ -38,7 +38,7 @@ h2,
 h3,
 .large_serif
 {
-  font-family: 'Georgia', serif;
+  font-family: 'Georgia', 'DejaVu Serif', 'Times', 'Times New Roman', serif;
 }
 
 h1,
@@ -175,7 +175,8 @@ ul#quotes
     background: #252525;
   }
   
-  ul#quotes li.odd
+  ul#quotes li.odd,
+  div.quote
   {
     background: #191919;
   }
@@ -211,9 +212,9 @@ ul#quotes
     {
       color: #fff;
     }
-    
   
-    ul#quotes li span.nick
+    ul#quotes li span.nick,
+    div.quote span.nick
     {
       display: block;
       float: left;
@@ -222,7 +223,8 @@ ul#quotes
       text-align: right;
     }
   
-    ul#quotes li span.text
+    ul#quotes li span.text,
+    div.quote span.text
     {
       display: block;
       float: left;
@@ -230,7 +232,9 @@ ul#quotes
     }
     
     ul#quotes li ul.actions,
-    ul#quotes li ul.meta
+    ul#quotes li ul.meta,
+    div.quote ul.actions,
+    div.quote ul.meta
     {
       padding-right: 2em;
       font-size: 0.75em;
@@ -238,33 +242,41 @@ ul#quotes
       list-style-type: none;
     }
     
-    ul#quotes li ul.actions
+    ul#quotes li ul.actions,
+    div.quote ul.actions
     {
       visibility: hidden;
       padding-top: 1em;
     }
     
-    ul#quotes li:hover ul.actions
+    ul#quotes li:hover ul.actions,
+    div.quote:hover ul.actions
     {
       visibility: visible;
     }
 
       ul#quotes li ul.actions li,
-      ul#quotes li ul.meta li
+      ul#quotes li ul.meta li,
+      div.quote ul.actions li,
+      div.quote ul.meta li
       {
         display: inline;
         padding: 0;
         border: none;
       }
       
-      ul#quotes li ul.actions li
+      ul#quotes li ul.actions li,
+      div.quote ul.actions li
       {
         margin: 0 0.5em;
       }
       
       ul#quotes li ul.actions li a,
       ul#quotes li ul.meta li a,
-      ul#quotes li ul.meta
+      ul#quotes li ul.meta,
+      div.quote ul.actions li a,
+      div.quote ul.meta li a,
+      div.quote ul.meta
       {
         color: #777;
       }
@@ -274,24 +286,33 @@ ul#quotes
       ul#quotes li ul.actions li a:active,
       ul#quotes li ul.meta li a:hover,
       ul#quotes li ul.meta li a:focus,
-      ul#quotes li ul.meta li a:active
+      ul#quotes li ul.meta li a:active,
+      div.quote ul.actions li a:hover,
+      div.quote ul.actions li a:focus,
+      div.quote ul.actions li a:active,
+      div.quote ul.meta li a:hover,
+      div.quote ul.meta li a:focus,
+      div.quote ul.meta li a:active
       {
         background: none;
         color: #ccc;
       }
       
-    ul#quotes li ul.meta
+    ul#quotes li ul.meta,
+    div.quote ul.meta
     {
       margin: 0;
       padding-bottom: 1em;
     }
     
-      ul#quotes li ul.meta li span.positive
+      ul#quotes li ul.meta li span.positive,
+      div.quote ul.meta li span.positive
       {
         color: #c6e567;
       }
       
-      ul#quotes li ul.meta li span.negative
+      ul#quotes li ul.meta li span.negative,
+      div.quote ul.meta li span.negative
       {
         color: #ff4b4b;
       }
@@ -388,12 +409,41 @@ span.colour_4
 div.flash_info,
 div.flash_notice
 {
+  position: relative;
   margin: 2em 0;
   padding: 0.5em 1em;
   text-align: center;
   border-width: 2px;
   border-style: solid;
 }
+
+  div.flash_info a.close,
+  div.flash_notice a.close
+  {
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    line-height: 1em;
+    padding: 0.25em 0.46em;
+    font-size: 0.75em;
+    border-width: 2px;
+    border-style: solid;
+    background: #141414;
+  }
+
+  div.flash_info a.close:hover,
+  div.flash_info a.close:focus,
+  div.flash_info a.close:active
+  div.flash_notice a.close:hover,
+  div.flash_notice a.close:focus,
+  div.flash_notice a.close:active
+  {
+    background: #333;
+    border-color: #ccc;
+    color: #ccc;
+  }
+  
 
 div.flash_info
 {
@@ -402,6 +452,12 @@ div.flash_info
   color: #bce567;
 }
 
+  div.flash_info a.close
+  {
+    border-color: #708742;
+    color: #bce567;
+  }
+
 div.flash_notice
 {
   background: #484729;
@@ -409,6 +465,12 @@ div.flash_notice
   color: #e5de67;
 }
 
+  div.flash_notice a.close
+  {
+    border-color: #878342;
+    color: #e5de67;
+  }
+  
 div.pagination
 {
   margin-top: 3.25em;

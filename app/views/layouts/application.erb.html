@@ -5,13 +5,23 @@
 
     <%= stylesheet_link_tag 'screen' %>
     <link href="<%= quotes_path %>.atom" rel="alternate" type="application/atom+xml" />
+    
+    <%= javascript_include_tag 'jquery' %>
+    <%= javascript_include_tag 'jquery.scrollTo' %>
+    <%= javascript_include_tag 'application' %>
   </head>
   
   <body>
     <% if flash[:notice] %>
-      <div class="flash_notice"><%= flash[:notice ]%></div>
+      <div class="flash_notice">
+        <%= flash[:notice ]%>
+        <a class="close" href="#" title="Close">X</a>
+      </div>
     <% elsif flash[:info ]%>
-      <div class="flash_info"><%= flash[:info] %></div>
+      <div class="flash_info">
+        <%= flash[:info] %>
+        <a class="close" href="#" title="Close">X</a>
+      </div>
     <% end %>
     
     <ul id="navigation">
@@ -33,7 +43,7 @@
         and then <a href="http://klepas.org">Pascal</a> came and squirted design everywhere. <span class="umberlla">&#9730;</span>
       </p>
       <span class="right">
-        <a href="#navigation">Back to top &uarr;</a>
+        <a id="back_to_top" href="#">Back to top &uarr;</a>
       </span>
       <div class="clear_both">
       </div>
