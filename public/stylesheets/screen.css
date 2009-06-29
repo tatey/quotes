@@ -1,3 +1,8 @@
+/* Reset */
+
+/* Reset stylesheet to be added here */
+
+
 /* Document and defaults */
 
 html
@@ -494,3 +499,24 @@ span.umberlla
   font-size: 3em;
   color: #ff3366;
 }
+
+/* Admin pane styling */
+
+table
+{
+  width: 100%;
+}
+
+  table thead tr th
+  {
+  text-align: left;
+  color: #999;
+  font-weight: normal;
+  padding-bottom: 0.5em;
+  border-bottom: 1px dotted #555;
+  }
+  
+  table tbody
+  {
+  }
+  
