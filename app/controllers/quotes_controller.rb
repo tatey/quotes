@@ -19,10 +19,14 @@ class QuotesController < ApplicationController
   
   def show
     @quote = Quote.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml  => @quote.to_xml }
-      format.json { render :json => @quote.to_json }
+    if @quote.approved?
+      respond_to do |format|
+        format.html
+        format.xml  { render :xml  => @quote.to_xml }
+        format.json { render :json => @quote.to_json }
+      end
+    else
+      render "#{RAILS_ROOT}/public/404.html", :status => 404
     end
   end
   
@@ -55,7 +59,7 @@ class QuotesController < ApplicationController
       flash[:info] = "Quote #{@quote.number} has been updated."
       redirect_to @quote
     else
-      render :action => 'update'
+      render :action => 'edit'
     end
   end
     

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class QuoteTest < ActiveSupport::TestCase
   def setup
-    @quote = quotes(:quote1)
+    @quote = quotes(:approved1)
   end
   
   test 'text attribute writer should strip leading and trailing whitespace' do

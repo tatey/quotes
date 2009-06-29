@@ -29,7 +29,7 @@ namespace :data do
     end
   end
   
-  desc 'Delete all quotes and their votes'
+  desc 'Destroy all quotes and their votes'
   task :destroy_all => :environment do
     Quote.destroy_all
   end
