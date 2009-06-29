@@ -5,7 +5,7 @@ class String
   #   "Nick: Line".delimiter      # => 4
   #   "* Nick performs an action" # => 0
   def delimiter
-    self.index('*') || self.index(':')
+    self.index(':') || self.index('*')
   end
   
   # Returns an array of lines using the new line carriage as the delimiter

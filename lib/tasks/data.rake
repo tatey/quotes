@@ -21,7 +21,6 @@ namespace :data do
         attrs[:created_at] = lines.first.match(/(Mon|Tue|Wed|Thu|Fri|Sat|Sun).{22}/).to_s
         lines.delete_at(0)
         attrs[:text] = lines.join("\n")
-        attrs[:text].gsub!('\-', '-')
       else
         attrs[:created_at] = 'Sun, 17 May 2009 21:11:13'
       end
