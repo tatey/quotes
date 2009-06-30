@@ -18,8 +18,4 @@ module QuotesHelper
       date_time.strftime("%A, #{date_time.day.ordinalize} %B %Y")
     end
   end
-  
-  def render_italic_and_bold(string)
-    BlueCloth.new.transform_italic_and_bold(h(string), nil)
-  end
 end
