@@ -1,8 +1,0 @@
-vote1:
-  id: 1
-  quote_id: 1
-  vote_type: <%= Vote::VOTE_TYPES[:up] %>
-vote2:
-  id: 2
-  quote_id: 2
-  vote_type: <%= Vote::VOTE_TYPES[:down] %>

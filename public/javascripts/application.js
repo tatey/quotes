@@ -1,9 +1,94 @@
 $(document).ready(function() {
-  $('#back_to_top').click(function() {
-    $.scrollTo(0, 800);
+  $('a#top').click(function() {
+    $.scrollTo(0, 500);
+    return false;
   });
   
-  $('.close').click(function() {
-    $('.close').parent().fadeOut();
+  $('ul.actions li').each(function () {
+    var form = $(this).find('form');
+    var a = $('<a></a>')
+    a.attr('href', form.attr('action'));
+    a.attr('class', 'vote');
+    a.html(form.find('input').attr('value'));
+    a.prependTo(this);
+    form.hide();
+  });
+  
+  $('a.vote').each(function() {
+    $(this).click(function() {
+      var span = $('#votes_count_' + this.href.match(/quote\/(\d+)/)[1] + ' span');
+      var votesCount = parseInt(span.text().match(/-?\d+/));
+      var voteType = parseInt(this.href.match(/-?\d$/));
+      votesCount += voteType;
+      span.removeClass();
+      if (votesCount > 2) {
+        span.attr('class', 'positive');
+      } else if (votesCount < -2) {
+        span.attr('class', 'negative');
+      } else {
+        span.attr('class', 'neutral');
+      }
+      span.text('(' + signInt(votesCount) + ')');
+      if (voteType >= 1) {
+        showNotification('Your up vote has been cast.');
+      } else {
+        showNotification('Your down vote has been cast.');
+      }
+      $.post(this.href);
+      return false;
+    })
+  });
+  
+  $('#quote_text').bind('keyup focus', function() {
+    var preview = $('#preview');
+    if (! preview.length) {
+      $('form').after(
+        '<h2>Preview</h2>' + 
+        '<div id="quote">' +
+          '<blockquote><p id="preview"></p></blockquote>' +
+          '<div class="clear_both"></div>' +
+        '</div>'
+      );
+    }
+    else {
+      preview.stopTime('preview');
+    }
+    preview.oneTime(500, 'preview', function() {
+      var lines = $('#quote_text').val().split("\n").map(function(line) {
+        return line.replace(/^(\s*\*|[^:]+:)\s*(.+)\s*/, function() { 
+          return '<span class="identifier">' + sanitise(arguments[1]) + '</span>' +
+                 '<span class="text">' + sanitise(arguments[2]) + '</span>' +
+                 '<br/>'
+          }
+        );
+      });
+      preview.html(lines.join("\n"));
+    });
   });
 });
+
+function signInt(int) {
+  return int > 0 ? '+' + int : int.toString();
+}
+
+function sanitise(string) {
+  return string.replace(/<\/?[^>]+>/g, '');
+}
+
+function showNotification(message) {
+  var notification = $('#notification');
+  if (! notification.length) {
+    notification = $('<div></div>');
+    notification.attr('id', 'notification');
+    notification.prependTo($(document.body));
+  } else {
+    notification.stopTime('vote');
+  }
+  notification.text(message);
+  notification.fadeIn('slow');
+  notification.oneTime(3000, 'vote', function() {
+    notification.fadeOut('slow', function() {
+      notification.remove();
+    });
+  });
+}

@@ -1,0 +1,13 @@
+<h1>Quotes</h1>
+
+<p class="large_serif">
+  Quotes for #lolbot on freenode. Feel free to <a href="http://github.com/tatey/quotes">pinch the code</a>, or if you&rsquo;re a resident from the channel <a href="/quote/new">submit a quote</a>.
+</p>
+
+<ul id="quotes">
+  <% @quotes.each_with_index do |quote, index| %>
+    <li class="<%= odd_or_even(index) %>">
+      <%= erb :quote, { :layout => false }, { :quote => quote } %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,5 @@
+<h1><a href="/">Quotes</a> &raquo; <%= @quote.number %></h1>
+
+<div id="quote">
+  <%= erb :quote, { :layout => false }, { :quote => @quote } %>
+</div>

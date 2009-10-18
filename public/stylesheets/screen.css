@@ -1,9 +1,4 @@
-/* Reset */
-
-/* Reset stylesheet to be added here */
-
-
-/* Document and defaults */
+/* Document */
 
 html
 {
@@ -79,11 +74,6 @@ h2
 
 /* Blocks */
 
-.display_block
-{
-  display: block;
-}
-
 .left
 {
   float: left;
@@ -105,176 +95,99 @@ h2
   top: -9999em;
   left: -9999em;
 }
-  
+
 /* Layout */
 
-ul#navigation
+div#notification
 {
-  float: right;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-  ul#navigation li
-  {
-    display: inline;
-  }
-
-    ul#navigation li a
-    {
-      padding: 0.5em 1em;
-      background: #222;
-      color: #ccc;
-    }
-    
-    ul#navigation li a:hover,
-    ul#navigation li a:focus,
-    ul#navigation li a:active
-    {
-      background: #444;
-    }
-
-ul#switch
-{
-  margin: 0;
-  padding: 1em 0 0 0;
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 0.5em 0;
+  background: #fff;
   text-align: center;
-  list-style-type: none;
+  color: #000;
 }
 
-  ul#switch li
-  {
-    display: inline;
-  }
-  
-    ul#switch li a
-    {
-      padding: 0.5em;
-      font-size: 1.5em;
-      color: #6c8fbf;
-    }
-    
-    ul#switch li a:hover,
-    ul#switch li a:focus,
-    ul#switch li a:active
-    {
-      background: #000;
-      color: #ff3366;
-    }
-    
 ul#quotes
 {
-  margin: 3em 0 0 0;
+  margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-  ul#quotes li
+  ul#quotes > li,
+  div#quote
   {
+    padding: 1em;
     border-top: 1px dotted #333;
   }
   
-  div.quote
+  div#quote
   {
-    border-top: 1px dotted #333;
     border-bottom: 1px dotted #333;
   }
   
-  ul#quotes > li:hover,
-  ul#quotes > li.odd:hover
-  {
-    background: #252525;
-  }
-  
-  ul#quotes li.odd,
-  div.quote
+  ul#quotes > li.even,
+  div#quote
   {
     background: #191919;
   }
   
-  ul#quotes li.unapproved
+  ul#quotes > li:hover,
+  div#quote:hover
   {
-    background: black;
-    border: 1px dashed #666;
+    background: #252525;
   }
   
-  ul#quotes li.unapproved:hover
+  ul#quotes li:hover ul.actions,
+  div#quote:hover ul.actions
   {
-    border: 1px solid #666;
+    visibility: visible;
+  }
+  
+  ul#quotes li ul.actions,
+  div#quote ul.actions
+  {
+    visibility: hidden;
+  }
+  
+  ul#quotes li ul.actions,  
+  ul#quotes li ul.meta,
+  div#quote ul.actions,
+  div#quote ul.meta
+  {
+    clear: both;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: 0.75em;
+    color: #777;
+    text-align: right;
   }
     
-    ul#quotes li.unapproved ul.actions li a:hover,
-    ul#quotes li.unapproved ul.actions li a:focus,
-    ul#quotes li.unapproved ul.actions li a:active
+    ul#quotes li ul.actions li,
+    ul#quotes li ul.meta li,
+    div#quote ul.actions li,
+    div#quote ul.meta li
     {
-      color: #fff;
-    }
-  
-    ul#quotes li span.identifier,
-    div.quote span.identifier
-    {
-      display: block;
-      float: left;
-      width: 5em;
-      margin-right: 1em;
-      text-align: right;
-    }
-  
-    ul#quotes li span.text,
-    div.quote span.text
-    {
-      display: block;
-      float: left;
-      width: 34em;
+      display: inline;
     }
     
-    ul#quotes li ul.actions,
-    ul#quotes li ul.meta,
-    div.quote ul.actions,
-    div.quote ul.meta
+    ul#quotes li ul.actions li,
+    ul#quotes li ul.meta li,
+    div#quote ul.actions li,
+    div#quote ul.meta li
     {
-      padding-right: 2em;
-      font-size: 0.75em;
-      text-align: right;
-      list-style-type: none;
+      margin: 0 0.5em;
     }
     
-    ul#quotes li ul.actions,
-    div.quote ul.actions
-    {
-      visibility: hidden;
-      padding-top: 1em;
-    }
-    
-    ul#quotes li:hover ul.actions,
-    div.quote:hover ul.actions
-    {
-      visibility: visible;
-    }
-
-      ul#quotes li ul.actions li,
-      ul#quotes li ul.meta li,
-      div.quote ul.actions li,
-      div.quote ul.meta li
-      {
-        display: inline;
-        padding: 0;
-        border: none;
-      }
-      
-      ul#quotes li ul.actions li,
-      div.quote ul.actions li
-      {
-        margin: 0 0.5em;
-      }
-      
       ul#quotes li ul.actions li a,
       ul#quotes li ul.meta li a,
-      ul#quotes li ul.meta,
-      div.quote ul.actions li a,
-      div.quote ul.meta li a,
-      div.quote ul.meta
+      div#quote ul.actions li a,
+      div#quote ul.meta li a
       {
         color: #777;
       }
@@ -285,36 +198,66 @@ ul#quotes
       ul#quotes li ul.meta li a:hover,
       ul#quotes li ul.meta li a:focus,
       ul#quotes li ul.meta li a:active,
-      div.quote ul.actions li a:hover,
-      div.quote ul.actions li a:focus,
-      div.quote ul.actions li a:active,
-      div.quote ul.meta li a:hover,
-      div.quote ul.meta li a:focus,
-      div.quote ul.meta li a:active
+      ul#quote ul.actions li a:hover,
+      ul#quote ul.actions li a:focus,
+      ul#quote ul.actions li a:active,
+      ul#quote ul.meta li a:hover,
+      ul#quote ul.meta li a:focus,
+      ul#quote ul.meta li a:active
       {
         background: none;
         color: #ccc;
       }
       
-    ul#quotes li ul.meta,
-    div.quote ul.meta
-    {
-      margin: 0;
-      padding-bottom: 1em;
-    }
-    
       ul#quotes li ul.meta li span.positive,
-      div.quote ul.meta li span.positive
+      div#quote ul.meta li span.positive
       {
         color: #c6e567;
       }
-      
+    
       ul#quotes li ul.meta li span.negative,
-      div.quote ul.meta li span.negative
+      div#quote ul.meta li span.negative
       {
         color: #ff4b4b;
       }
-        
+      
+      ul#quotes li blockquote,
+      div#quote blockquote
+      {
+        margin: 0;
+        padding: 0;
+      }
+
+        ul#quotes li blockquote p,
+        div#quote blockquote p
+        {
+          margin: 0;
+        }
+
+        ul#quotes li blockquote p span.identifier,
+        div#quote blockquote p span.identifier
+        {
+          float: left;
+          display: block;
+          width: 15%;
+          padding-right: 1em;
+          text-align: right;
+          clear: left;
+        }
+
+        div#quote blockquote p#preview span.identifier
+        {
+          font-weight: bold;
+        }
+
+        ul#quotes li blockquote p span.text,
+        div#quote blockquote p span.text
+        {
+          float: left;
+          display: block;
+          width: 80%;
+        }
+      
 div#footer
 {
   margin-top: 2.25em;
@@ -328,13 +271,21 @@ div#footer
     padding: 0;
   }
 
-/* Forms */
+    div#footer p span.umberlla
+    {
+      padding-left: 0.5em;
+      line-height: 0;
+      font-size: 3em;
+      color: #ff3366;
+    }
+
+/* Form */
 
 fieldset
 {
   margin: 0;
   padding: 0;
-  border: none;  
+  border: none;
 }
 
   fieldset ol
@@ -348,175 +299,25 @@ fieldset
     {
       margin-bottom: 1em;
     }
-  
-      fieldset ol li label
-      {
-        display: block;
-      }
-      
-      fieldset ol li input,
-      fieldset ol li select,
-      fieldset ol li textarea
-      {
-        font-family: 'Georgia', sans-serif;
-      }
-      
-      fieldset ol li input,
-      fieldset ol li select
-      {
-        padding: 0.1em;
-        font-size: 1.5em;
-      }
-      
-      fieldset ol li textarea
-      {
-        width: 100%;
-        height: 10em;
-        padding: 0.25em;
-      }
-      
-/* Identifier styles */
-
-span.action
-{
-  font-style: italic;
-}
-
-span.colour_0
-{
-  color: #c6e567;
-}
-
-span.colour_1
-{
-  color: #ff3366;
-}
-
-span.colour_2
-{
-  color: #93bedf;
-}
-
-span.colour_3
-{
-  color: #804070;
-}
-
-span.colour_4
-{
-  color: #ae9d22;
-}
-
-/* Other */
-
-div.flash_info,
-div.flash_notice,
-div.flash_error
-{
-  position: relative;
-  margin: 2em 0;
-  padding: 0.5em 1em;
-  text-align: center;
-  border-width: 1px;
-  border-style: solid;
-}
-
-  div.flash_info a.close,
-  div.flash_notice a.close,
-  div.flash_error a.close
-  {
-    display: block;
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    line-height: 1em;
-    padding: 0.25em 0.46em;
-    font-size: 0.75em;
-    border-width: 1px;
-    border-style: solid;
-    background: #141414;
-    border-color: #332828;
-    color: #bce567;
-  }
-
-  div.flash_info a.close:hover,
-  div.flash_info a.close:focus,
-  div.flash_info a.close:active
-  div.flash_notice a.close:hover,
-  div.flash_notice a.close:focus,
-  div.flash_notice a.close:active,
-  div.flash_error a.close:hover,
-  div.flash_error a.close:focus,
-  div.flash_error a.close:active
-  {
-    background: #333;
-    border-color: #ccc;
-    color: #ccc;
-  }
-
-div.flash_info,
-div.flash_notice
-{
-  background: black;
-  border-color: #332828;
-}
-
-div.flash_error
-{
-  background: black;
-  border-color: #510c0b;
-  color: #ff4444;
-}
-
-div.flash_info
-{
-  color: #bce567;
-}
-
-div.flash_notice
-{
-  color: #ccc;
-}
-
-div.pagination
-{
-  margin-top: 3.25em;
-  padding-top: 2em;
-  border-top: 1px solid #777;
-  text-align: center;
-}
-
-  div.pagination a,
-  div.pagination span
-  {
-    margin: 0 0.75em;
-  }
-  
-span.umberlla
-{
-  padding-left: 0.5em;
-  line-height: 0;
-  font-size: 3em;
-  color: #ff3366;
-}
-
-/* Admin pane styling */
-
-table
-{
-  width: 100%;
-}
-
-  table thead tr th
-  {
-  text-align: left;
-  color: #999;
-  font-weight: normal;
-  padding-bottom: 0.5em;
-  border-bottom: 1px dotted #555;
-  }
-  
-  table tbody
-  {
-  }
-  
+    
+    fieldset ol li input,
+    fieldset ol li select,
+    fieldset ol li textarea
+    {
+      font-family: 'Georgia', sans-serif;
+    }
+    
+    fieldset ol li input,
+    fieldset ol li select
+    {
+      padding: 0.1em;
+      font-size: 1.5em;
+    }
+    
+    fieldset ol li textarea
+    {
+      width: 100%;
+      height: 10em;
+      padding: 0.25em;
+    }
+    
