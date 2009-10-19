@@ -174,15 +174,15 @@ ul#quotes
     div#quote ul.meta li
     {
       display: inline;
+      margin: 0 0.5em;
+      
     }
     
-    ul#quotes li ul.actions li,
-    ul#quotes li ul.meta li,
-    div#quote ul.actions li,
-    div#quote ul.meta li
-    {
-      margin: 0 0.5em;
-    }
+      ul#quotes li ul.actions form,
+      ul#quotes li ul.actions form fieldset
+      {
+        display: inline;
+      }
     
       ul#quotes li ul.actions li a,
       ul#quotes li ul.meta li a,
@@ -257,6 +257,21 @@ ul#quotes
           display: block;
           width: 80%;
         }
+        
+ul#paginator
+{
+  margin: 4em 0 0 0;
+  padding: 2.25em 0 0 0;
+  list-style-type: none;
+  border-top: 1px solid #777;
+  text-align: center;
+}
+
+  ul#paginator li
+  {
+    display: inline;
+    margin: 0 1em;
+  }
       
 div#footer
 {
@@ -280,6 +295,11 @@ div#footer
     }
 
 /* Form */
+
+form#new fieldset
+{
+  width: 100%;
+}
 
 fieldset
 {

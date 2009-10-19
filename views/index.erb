@@ -6,8 +6,39 @@
 
 <ul id="quotes">
   <% @quotes.each_with_index do |quote, index| %>
-    <li class="<%= odd_or_even(index) %>">
+    <li id="quote_<%= quote.id %>" class="<%= odd_even(index) %>">
       <%= erb :quote, { :layout => false }, { :quote => quote } %>
     </li>
   <% end %>
 </ul>
+
+<ul id="paginator">
+  <li>
+    <% if @quotes.prev_page %>
+      <a href="/quotes/page/<%= @quotes.prev_page %>">&larr; Previous</a>
+    <% else %>
+      <span>&larr; Previous</span>
+    <% end %>
+  </li>
+  <% @quotes.page_range.each do |page| %>
+    <li>
+      <% if @quotes.current_page == page %>
+        <span><%= page %></span>
+      <% else %>
+        <a href="/quotes/page/<%= page %>"><%= page %></a>
+      <% end %>
+    </li>
+  <% end %>
+  <li>
+    <% if @quotes.next_page %>
+      <a href="/quotes/page/<%= @quotes.next_page %>">Next &rarr;</a>
+    <% else %>
+      <span>Next &rarr;</span>
+    <% end %>
+  </li>
+</ul>
+
+<% if @new_quote %>
+  <div id="new_quote">
+  </div>
+<% end %>

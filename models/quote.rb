@@ -26,6 +26,11 @@ class Quote < Sequel::Model
   def validate
     validates_min_length 10, :text
     validates_presence :text
+    begin
+      lines
+    rescue
+      errors.add(:text, 'is incorrectly formatted.')
+    end
   end
                     
   private

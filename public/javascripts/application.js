@@ -1,9 +1,15 @@
 $(document).ready(function() {
+  if ($('div#new_quote').length) {
+    showNotification('Your quote belongs to us, now.', 5000);
+    $('div#new_quote').remove();
+  }
+  
   $('a#top').click(function() {
+    $(this).blur();
     $.scrollTo(0, 500);
     return false;
   });
-  
+
   $('ul.actions li').each(function () {
     var form = $(this).find('form');
     var a = $('<a></a>')
@@ -30,9 +36,9 @@ $(document).ready(function() {
       }
       span.text('(' + signInt(votesCount) + ')');
       if (voteType >= 1) {
-        showNotification('Your up vote has been cast.');
+        showNotification('Your up vote has been cast.', 3000);
       } else {
-        showNotification('Your down vote has been cast.');
+        showNotification('Your down vote has been cast.', 3000);
       }
       $.post(this.href);
       return false;
@@ -75,18 +81,18 @@ function sanitise(string) {
   return string.replace(/<\/?[^>]+>/g, '');
 }
 
-function showNotification(message) {
+function showNotification(message, duration) {
   var notification = $('#notification');
   if (! notification.length) {
     notification = $('<div></div>');
     notification.attr('id', 'notification');
     notification.prependTo($(document.body));
   } else {
-    notification.stopTime('vote');
+    notification.stopTime('notification');
   }
   notification.text(message);
   notification.fadeIn('slow');
-  notification.oneTime(3000, 'vote', function() {
+  notification.oneTime(duration, 'notification', function() {
     notification.fadeOut('slow', function() {
       notification.remove();
     });

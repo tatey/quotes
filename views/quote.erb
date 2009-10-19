@@ -19,13 +19,13 @@
   <p>
     <% quote.lines.each do |line| %>
       <span class="identifier" style="color: <%= line.style %>"><%= line.identifier %></span>
-      <span class="text"><%= line.text %></span>
+      <span class="text"><%= pretty(line.text) %></span>
       <br/>
     <% end %>
   </p>
 </blockquote>
 
 <ul class="meta">
-  <li><a href="/quote/<%= quote.id %>" title="Permalink"><%= quote.number %> submitted <%= render_formated_datetime(quote.created_at) %></a></li>
-  <li id="votes_count_<%= quote.id %>"><%= render_votes_count(quote.votes_count) %></li>
+  <li><a href="/quote/<%= quote.id %>" title="Permalink"><%= quote.number %> submitted <%= humanised_datetime(quote.created_at) %></a></li>
+  <li id="votes_count_<%= quote.id %>"><%= sign_and_style_votes_count(quote.votes_count) %></li>
 </ul>
