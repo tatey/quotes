@@ -61,12 +61,17 @@ $(document).ready(function() {
     }
     preview.oneTime(500, 'preview', function() {
       var lines = $('#quote_text').val().split("\n").map(function(line) {
-        return line.replace(/^(\s*\*|[^:]+:)\s*(.+)\s*/, function() { 
-          return '<span class="identifier">' + sanitise(arguments[1]) + '</span>' +
-                 '<span class="text">' + sanitise(arguments[2]) + '</span>' +
-                 '<br/>'
-          }
-        );
+        var regex = /^(\s*\*|[^:]+:)\s*(.+)\s*/;
+        if (line.match(regex)) {
+          return line.replace(regex, function() { 
+            return '<span class="identifier">' + sanitise(arguments[1]) + '</span>' +
+                   '<span class="text">' + sanitise(arguments[2]) + '</span>' +
+                   '<br/>'
+            }
+          );          
+        } else {
+          return sanitise(line);
+        }
       });
       preview.html(lines.join("\n"));
     });

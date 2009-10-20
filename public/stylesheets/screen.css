@@ -142,18 +142,6 @@ ul#quotes
     background: #252525;
   }
   
-  ul#quotes li:hover ul.actions,
-  div#quote:hover ul.actions
-  {
-    visibility: visible;
-  }
-  
-  ul#quotes li ul.actions,
-  div#quote ul.actions
-  {
-    visibility: hidden;
-  }
-  
   ul#quotes li ul.actions,  
   ul#quotes li ul.meta,
   div#quote ul.actions,
@@ -167,6 +155,18 @@ ul#quotes
     color: #777;
     text-align: right;
   }
+  
+  ul#quotes li ul.actions,
+  div#quote ul.actions
+  {
+    padding-bottom: 2em;
+  }
+  
+  ul#quotes li ul.meta,
+  div#quote ul.meta
+  {
+    padding-top: 2em;
+  }
     
     ul#quotes li ul.actions li,
     ul#quotes li ul.meta li,
@@ -174,8 +174,8 @@ ul#quotes
     div#quote ul.meta li
     {
       display: inline;
+      display: -webkit-inline-box;
       margin: 0 0.5em;
-      
     }
     
       ul#quotes li ul.actions form,
@@ -198,12 +198,12 @@ ul#quotes
       ul#quotes li ul.meta li a:hover,
       ul#quotes li ul.meta li a:focus,
       ul#quotes li ul.meta li a:active,
-      ul#quote ul.actions li a:hover,
-      ul#quote ul.actions li a:focus,
-      ul#quote ul.actions li a:active,
-      ul#quote ul.meta li a:hover,
-      ul#quote ul.meta li a:focus,
-      ul#quote ul.meta li a:active
+      div#quote ul.actions li a:hover,
+      div#quote ul.actions li a:focus,
+      div#quote ul.actions li a:active,
+      div#quote ul.meta li a:hover,
+      div#quote ul.meta li a:focus,
+      div#quote ul.meta li a:active
       {
         background: none;
         color: #ccc;
@@ -240,9 +240,10 @@ ul#quotes
           float: left;
           display: block;
           width: 15%;
-          padding-right: 1em;
+          margin-right: 1em;
           text-align: right;
           clear: left;
+          overflow: hidden;
         }
 
         div#quote blockquote p#preview span.identifier
@@ -256,6 +257,12 @@ ul#quotes
           float: left;
           display: block;
           width: 80%;
+        }
+        
+        ul#quotes li blockquote p span.action,
+        div#quote blockquote p span.action
+        {
+          font-style: italic;
         }
         
 ul#paginator

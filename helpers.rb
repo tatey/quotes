@@ -27,10 +27,19 @@ helpers do
   end
   
   def pretty(string)
-    string = string.gsub('&', '&amp;')
-    string = string.gsub(/\*([^\*]+)\*/, '<em>\1</em>');
-    string = string.gsub(/'([^']+)'/, '&lsquo;\1&rsquo;')
-    string = string.gsub(/"([^"]+)"/, '&ldquo;\1&rdquo;')
-    string = string.gsub('\'', '&rsquo;')
+    string = string.gsub(/\A(.*)\Z/, ' \1 ')                           # Pad with whitespace for quote substitution
+    string = string.gsub(/\*(\S[^\*]+\S)\*/, '<em>\1</em>')            # *match match*, *not match *, * invalid *, * invalid*
+    string = string.gsub(/\s"([^"]+)"([\s\W])/, ' &ldquo;\1&rdquo;\2') # "match", "match"!, not"match", not"match
+    string = string.gsub(/\s'([^']+)'([\s\W])/, ' &lsquo;\1&rsquo;\2') # 'match', not'match', not'match
+    string = string.gsub(/'\s/, '&rsquo; ')                            # N' -> N’
+    string = string.gsub(/(\s)?'/, '\1&lsquo;')                        # 'N -> ‘N 
+    string = string.gsub(/"/, '&rdquo;')
+    string = string.strip
+  end
+    
+  def h(string)
+    string = string.gsub(/&/, '&amp;')
+    string = string.gsub(/>/, '&gt;')
+    string = string.gsub(/</, '&lt;')
   end
 end

@@ -18,8 +18,8 @@
 <blockquote>
   <p>
     <% quote.lines.each do |line| %>
-      <span class="identifier" style="color: <%= line.style %>"><%= line.identifier %></span>
-      <span class="text"><%= pretty(line.text) %></span>
+      <span class="identifier <%= line.identifier_type %>" style="color: <%= line.hex_colour %>"><%= h(line.identifier) %></span>
+      <span class="text <%= line.identifier_type %>"><%= pretty(h(line.text)) %></span>
       <br/>
     <% end %>
   </p>
