@@ -82,6 +82,7 @@ function signInt(int) {
   return int > 0 ? '+' + int : int.toString();
 }
 
+// Borrowed from Prototype's stripTags();
 function sanitise(string) {
   return string.replace(/<\/?[^>]+>/g, '');
 }

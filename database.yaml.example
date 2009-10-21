@@ -1,0 +1,4 @@
+development:
+  uri: sqlite://db/development.db
+production:
+  uri: mysql://user:pass@host/dbname

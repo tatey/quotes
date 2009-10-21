@@ -1,11 +1,18 @@
 require 'rubygems'
 require 'sinatra'
+require 'yaml'
 require 'sequel'
 require 'helpers'
 require 'erb'
 
+yaml = YAML.load_file File.join(File.dirname(__FILE__), 'database.yml')
+configure :development do
+  DB = Sequel.connect(yaml['development']['uri'])
+end
+configure :production do
+  DB = Sequel.connect(yaml['production']['uri'])
+end
 Sequel.extension :pagination
-DB = Sequel.sqlite 'db/quotes.db'
 %w(line quote vote).each { |file| require "models/#{file}" }
 
 enable :sessions
