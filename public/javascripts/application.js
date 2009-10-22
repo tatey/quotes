@@ -1,6 +1,6 @@
 $(document).ready(function() {
   if ($('div#new_quote').length) {
-    showNotification('Your quote belongs to us, now.', 5000);
+    showNotification('Quote has been submitted successfully.', 5000);
     $('div#new_quote').remove();
   }
   
@@ -22,7 +22,8 @@ $(document).ready(function() {
   
   $('a.vote').each(function() {
     $(this).click(function() {
-      var span = $('#votes_count_' + this.href.match(/quote\/(\d+)/)[1] + ' span');
+      var quoteId = this.href.match(/quote\/(\d+)/)[1];
+      var span = $('#votes_count_' + quoteId + ' span');
       var votesCount = parseInt(span.text().match(/-?\d+/));
       var voteType = parseInt(this.href.match(/-?\d$/));
       votesCount += voteType;
@@ -34,11 +35,11 @@ $(document).ready(function() {
       } else {
         span.attr('class', 'neutral');
       }
-      span.text('(' + signInt(votesCount) + ')');
+      span.text('(' + signInt(votesCount) + ' Votes)');
       if (voteType >= 1) {
-        showNotification('Your up vote has been cast.', 3000);
+        showNotification('&#9650; Up vote cast for #' + pad(quoteId), 3000);
       } else {
-        showNotification('Your down vote has been cast.', 3000);
+        showNotification('&#9660; Down vote cast for #' + pad(quoteId), 3000);
       }
       $.post(this.href);
       return false;
@@ -78,6 +79,14 @@ $(document).ready(function() {
   });
 });
 
+function pad(int) {
+  var string = int.toString();
+  while (string.length < 4) {
+    string = '0' + string;
+  }
+  return string;
+}
+
 function signInt(int) {
   return int > 0 ? '+' + int : int.toString();
 }
@@ -96,7 +105,7 @@ function showNotification(message, duration) {
   } else {
     notification.stopTime('notification');
   }
-  notification.text(message);
+  notification.html(message);
   notification.fadeIn('slow');
   notification.oneTime(duration, 'notification', function() {
     notification.fadeOut('slow', function() {

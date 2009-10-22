@@ -15,9 +15,9 @@
 <ul id="paginator">
   <li>
     <% if @quotes.prev_page %>
-      <a href="/quotes/page/<%= @quotes.prev_page %>">&larr; Previous</a>
+      <a href="/quotes/page/<%= @quotes.prev_page %>">&#9664; Previous</a>
     <% else %>
-      <span>&larr; Previous</span>
+      <span>&#9664; Previous</span>
     <% end %>
   </li>
   <% @quotes.page_range.each do |page| %>
@@ -31,9 +31,9 @@
   <% end %>
   <li>
     <% if @quotes.next_page %>
-      <a href="/quotes/page/<%= @quotes.next_page %>">Next &rarr;</a>
+      <a href="/quotes/page/<%= @quotes.next_page %>">Next &#9654;</a>
     <% else %>
-      <span>Next &rarr;</span>
+      <span>Next &#9654;</span>
     <% end %>
   </li>
 </ul>

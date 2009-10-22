@@ -1,18 +1,5 @@
-<ul class="actions">
-  <li>
-    <form action="/quote/<%= quote.id %>/votes/<%= Vote::VOTE_TYPES[:up] %>" method="post">
-      <fieldset>
-        <input type="submit" value="&uarr; Vote up" />
-      </fieldset>
-    </form>
-  </li>
-  <li>
-    <form action="/quote/<%= quote.id %>/votes/<%= Vote::VOTE_TYPES[:down] %>" method="post">
-      <fieldset>
-        <input type="submit" value="&darr; Vote down" />
-      </fieldset>
-    </form>
-  </li>
+<ul class="meta">
+  <li><a href="/quote/<%= quote.id %>" title="Permalink"><%= quote.number %> submitted <%= humanised_datetime(quote.created_at) %></a></li>
 </ul>
 
 <blockquote>
@@ -25,7 +12,20 @@
   </p>
 </blockquote>
 
-<ul class="meta">
-  <li><a href="/quote/<%= quote.id %>" title="Permalink"><%= quote.number %> submitted <%= humanised_datetime(quote.created_at) %></a></li>
+<ul class="actions">
+  <li>
+    <form action="/quote/<%= quote.id %>/votes/<%= Vote::VOTE_TYPES[:up] %>" method="post">
+      <fieldset>
+        <input type="submit" value="&#9650; Up" />
+      </fieldset>
+    </form>
+  </li>
+  <li>
+    <form action="/quote/<%= quote.id %>/votes/<%= Vote::VOTE_TYPES[:down] %>" method="post">
+      <fieldset>
+        <input type="submit" value="&#9660; Down" />
+      </fieldset>
+    </form>
+  </li>
   <li id="votes_count_<%= quote.id %>"><%= sign_and_style_votes_count(quote.votes_count) %></li>
 </ul>

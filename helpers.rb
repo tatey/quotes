@@ -9,7 +9,7 @@ helpers do
     end
     %{
       <span class="#{html_class}">
-        (#{'+' if count > 0}#{count})
+        (#{'+' if count > 0}#{count} Votes)
       </span>
     }
   end

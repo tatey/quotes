@@ -105,10 +105,11 @@ div#notification
   left: 0;
   top: 0;
   width: 100%;
-  padding: 0.5em 0;
-  background: #fff;
+  padding: 1.2em 0;
+  background: #444;
+  font-size: 1.3em;
   text-align: center;
-  color: #000;
+  color: #ccc;
 }
 
 ul#quotes
@@ -159,13 +160,13 @@ ul#quotes
   ul#quotes li ul.actions,
   div#quote ul.actions
   {
-    padding-bottom: 2em;
+    padding-top: 2em;
   }
   
   ul#quotes li ul.meta,
   div#quote ul.meta
   {
-    padding-top: 2em;
+    padding-bottom: 2em;
   }
     
     ul#quotes li ul.actions li,
@@ -182,7 +183,11 @@ ul#quotes
       ul#quotes li ul.actions form fieldset
       {
         display: inline;
+        margin: 0;
+        padding: 0;
+        height: 1.3em;
       }
+        
     
       ul#quotes li ul.actions li a,
       ul#quotes li ul.meta li a,
@@ -209,14 +214,14 @@ ul#quotes
         color: #ccc;
       }
       
-      ul#quotes li ul.meta li span.positive,
-      div#quote ul.meta li span.positive
+      ul#quotes li ul.actions li span.positive,
+      div#quote ul.actions li span.positive
       {
         color: #c6e567;
       }
     
-      ul#quotes li ul.meta li span.negative,
-      div#quote ul.meta li span.negative
+      ul#quotes li ul.actions li span.negative,
+      div#quote ul.actions li span.negative
       {
         color: #ff4b4b;
       }
