@@ -1,13 +1,61 @@
 # Quotes
 
-Because IRC quotes should be pretty. [See a live deployment of Quotes](http://lolbotquotes.com) for #lolbot on irc.freenode.org.
+Quotes is a Sinatra application for browsing and submitting IRC quotes. Quotes is designed to be simple and beautiful.
 
-## Requirements
+## Features
 
-* [Ruby](http://www.ruby-lang.org/)
-* [RubyGems](http://docs.rubygems.org/) (1.3.5)
-* [Sinatra](http://sinatrarb.com/) (0.9.4)
-* [Sequel](http://sequel.rubyforge.org/) (3.5.0)
+* Live preview when submitting a quote
+* Voting up and down
+* Consistent, colourised nicknames for enhancing conversation flow
+* Automatic converting for ‘single’ and “double” typographic quotes
+* Compliant XHTML, CSS and unobtrusive JavaScript
+* Small footprint
+
+## Example
+
+[See a live example of Quotes](http://quotes.tatey.com)
+
+## Dependancies
+
+### Required
+
+* Ruby
+* RubyGems
+* Sinatra (0.9.4)
+* Sequel (3.5.0)
+
+### Optional
+
+Quotes is distributed with an SQLite database containing sample data for development.
+
+* SQLite3
+* sqlite3-ruby (1.2.4)
+
+## Setup
+
+### Using database distributed with Quotes
+
+Copy database.yml.example and rename database.yml.
+
+### New database
+
+Create the database and run the migration.
+
+    $ sequel -m db/migrate sqlite:///db/database.db
+    
+Copy database.yml.example and rename database.yml. Update database.yml. See [Sequel documentation](http://sequel.rubyforge.org/rdoc/files/doc/opening_databases_rdoc.html) for a valid list of URIs. 
+    
+    development:
+      uri: sqlite://db/database.db
+
+## Usage
+
+    $ ruby application.rb
+
+## Authors
+
+* [Tate Johnson](http://tatey.com) (Ruby, JavaScript, XHTML, CSS)
+* [Pascal Klein](http://klepas.org) (Design)
 
 ## License
 
