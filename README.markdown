@@ -11,10 +11,6 @@ Quotes is a Sinatra application for browsing and submitting IRC quotes. Quotes i
 * Compliant XHTML, CSS and unobtrusive JavaScript
 * Small footprint
 
-## Example
-
-[See a live example of Quotes](http://quotes.tatey.com)
-
 ## Dependancies
 
 ### Required
